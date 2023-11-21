@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @Entity
-@Table(name = "Question")
+@Table(name = "question")
 public class Question implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -18,9 +18,9 @@ public class Question implements Serializable {
     private String difficulty;
     private String category;
     private String question;
-    @JsonProperty("correct_answer")
+    @JsonProperty("correct")
     private boolean correctAnswer;
-    @JsonProperty("incorrect_answers")
+    @JsonProperty("incorrect")
     private ArrayList<String> incorrectAnswers;
 
     public String getType() {
