@@ -1,5 +1,6 @@
 package nl.qs.fivequestions.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -18,9 +19,9 @@ public class Question implements Serializable {
     private String difficulty;
     private String category;
     private String question;
-    @JsonProperty("correct")
-    private boolean correctAnswer;
-    @JsonProperty("incorrect")
+    @JsonProperty("correct_answer")
+    private String correctAnswer;
+    @JsonProperty("incorrect_answers")
     private ArrayList<String> incorrectAnswers;
 
     public String getType() {
@@ -30,6 +31,7 @@ public class Question implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
+
     public String getCategory() {
         return category;
     }
@@ -54,11 +56,11 @@ public class Question implements Serializable {
         this.question = question;
     }
 
-    public boolean isCorrectAnswer() {
+    public String getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public void setCorrectAnswer(boolean correctAnswer) {
+    public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 

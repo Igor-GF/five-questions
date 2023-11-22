@@ -1,11 +1,11 @@
 package nl.qs.fivequestions.controller;
 
-import nl.qs.fivequestions.model.Question;
+import nl.qs.fivequestions.model.Answer;
+import nl.qs.fivequestions.model.QuestionWrapper;
 import nl.qs.fivequestions.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,21 +13,18 @@ import java.util.List;
 @RequestMapping("api")
 public class QuestionController {
 
-    private QuestionService questionService;
-
     @Autowired
-    public QuestionController(QuestionService questionService) {
-        this.questionService = questionService;
-    }
+    private QuestionService questionService;
 
     // get questions method
     @GetMapping("questions")
-    public List<Question> getQuestions() {
+    public ResponseEntity<List<QuestionWrapper>> getQuestions() {
         return questionService.getQuestions();
     }
+
     // post answers
-//    @PostMapping("answers/check")
-//    public void checkAnswers(@RequestBody) {
-//
-//    }
+    @PostMapping("answers/submit")
+    public ResponseEntity<Integer> submitAnswers(@RequestBody List<Answer> answers) {
+        return questionService.calculateResult(answers);
+    }
 }
