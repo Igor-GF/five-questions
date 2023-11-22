@@ -1,7 +1,8 @@
 package nl.qs.fivequestions.service;
 
-import nl.qs.fivequestions.controller.APIController;
-import nl.qs.fivequestions.model.*;
+import nl.qs.fivequestions.model.Answer;
+import nl.qs.fivequestions.model.Question;
+import nl.qs.fivequestions.model.QuestionWrapper;
 import nl.qs.fivequestions.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
